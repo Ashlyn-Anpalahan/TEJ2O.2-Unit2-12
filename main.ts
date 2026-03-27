@@ -12,10 +12,12 @@ const strip = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB)
 strip.clear()
 strip.show()
 
+basic.showIcon(IconNames.Happy)
+
 // button a
 input.onButtonPressed(Button.A, function () {
 
-    distance = sonar.ping(DigitalPin.P1, DigitalPin.P2, PingUnit.Centimeters)
+    distance = sonar.ping(DigitalPin.P8, DigitalPin.P12, PingUnit.Centimeters)
 
     if (distance < 10) {
         strip.showColor(neopixel.colors(NeoPixelColors.Red))
@@ -23,4 +25,5 @@ input.onButtonPressed(Button.A, function () {
         strip.showColor(neopixel.colors(NeoPixelColors.Green))
     }
     strip.show()
+    basic.showNumber(distance)
 })
